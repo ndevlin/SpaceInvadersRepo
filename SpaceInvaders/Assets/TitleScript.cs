@@ -29,10 +29,6 @@ public class TitleScript : MonoBehaviour
         {
             Application.LoadLevel("GameplayScene");
         }
-        if(GUILayout.Button("High score"))
-        {
-            Debug.Log("You should implement a high score screen.");
-        }
         if(GUILayout.Button("Exit"))
         {
             Application.Quit();

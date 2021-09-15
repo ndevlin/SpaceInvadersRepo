@@ -104,6 +104,8 @@ public class Ship : MonoBehaviour
 
         // Destroy removes the gameObject from the scene and marks it for garbage collection
         Destroy(gameObject);
+
+        Application.LoadLevel("TitleScreen");
     }
 
 }
