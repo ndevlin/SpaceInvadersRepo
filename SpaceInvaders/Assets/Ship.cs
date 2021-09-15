@@ -9,7 +9,7 @@ public class Ship : MonoBehaviour
     public float rotation;
     public float timer;
 
-    public bool thrust;
+    public int thrust;
     public float rotationBool;
 
     public bool thrustPressed;
@@ -18,92 +18,36 @@ public class Ship : MonoBehaviour
     // Use this for initialization 
     void Start()
     {
-        timer = 0.0f;
-        thrust = false;
-        rotationBool = 0.0f;
+        rotation = -90.0f;
+        thrust = 0;
         thrustPressed = false;
-        rotatePressed = false;
     }
 
     /* forced changes to rigid body physics parameters should be done through the FixedUpdate() 
     method, not the Update() method*/
     void FixedUpdate()
     {
-        timer += Time.deltaTime;
+        // Vector3 default initializes all components to 0.0f     
+        forceVector.z = 1000000.0f;
 
-        if (timer < 1.0f)
+        // force thruster     
+        if (Input.GetAxisRaw("Horizontal") < 0)
         {
-            // Vector3 default initializes all components to 0.0f     
-            forceVector.x = 0.0f;
-            rotationSpeed = 0.0f;
-            thrust = false;
+            thrust = 1;
 
-            rotation = -90.0f;
-            rotationBool = 0.0f;
+        }
+        else if (Input.GetAxisRaw("Horizontal") > 0)
+        {
+            thrust = -1;
         }
         else
         {
-            // Vector3 default initializes all components to 0.0f     
-            forceVector.x = 1000000000.0f;
-            rotationSpeed = 1.0f;
+            thrust = 0;
+        }
 
-            if (Input.GetKeyDown(KeyCode.W))
-            {
-                thrustPressed = true;
-            }
-
-            if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D))
-            {
-                rotatePressed = true;
-            }
-
-
-            // force thruster     
-            if (Input.GetAxisRaw("Vertical") > 0 && thrustPressed == true)
-            {
-                thrust = true;
-            }
-            if (Input.GetAxisRaw("Horizontal") > 0 && rotatePressed == true)
-            {
-                Debug.Log("Rotation " + rotation);
-
-                rotationBool = 1.0f;
-
-            }
-            else if (Input.GetAxisRaw("Horizontal") < 0 && rotatePressed == true)
-            {
-                Debug.Log("Rotation " + rotation);
-
-                rotationBool = -1.0f;
-            }
-            else
-            {
-                rotationBool = 0.0f;
-            }
-
-
-            if(thrust)
-            {
-                GetComponent<Rigidbody>().AddRelativeForce(forceVector);
-                thrust = false;
-            }
-
-            if(rotationBool > 0.1f || rotationBool < 0.1f)
-            {
-                rotation += rotationSpeed * rotationBool;
-                Quaternion rot = Quaternion.Euler(new Vector3(0.0f, rotation, 0.0f));
-                if (rotation > 0.01 || rotation < 0.01)
-                {
-                    GetComponent<Rigidbody>().MoveRotation(rot);
-                }
-                rotationBool = 0.0f;
-
-
-                Debug.Log("Rotation " + rotation);
-
-                //gameObject.transform.Rotate(0, 2.0f, 0.0f);
-            }
-
+        if(thrust != 0)
+        {
+            GetComponent<Rigidbody>().AddRelativeForce(thrust * forceVector);
         }
 
     }
