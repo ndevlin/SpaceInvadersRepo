@@ -38,14 +38,14 @@ public class BulletScript : MonoBehaviour
 
         Collider collider = collision.collider;
         
-        if(collider.CompareTag("Asteroid"))
+        if(collider.CompareTag("Alien"))
         {
-            AsteroidScript roid = collider.gameObject.GetComponent<AsteroidScript>();
+            AlienScript alien = collider.gameObject.GetComponent<AlienScript>();
 
             //let the other object handle it's own death
-            roid.Die();
+            alien.Die();
 
-            //Destroy this bullet which collided with the Asteroid
+            //Destroy this bullet which collided with the Alien
             Destroy(gameObject);
         }
         else

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AsteroidScript : MonoBehaviour
+public class AlienScript : MonoBehaviour
 {
     public int pointValue;
 

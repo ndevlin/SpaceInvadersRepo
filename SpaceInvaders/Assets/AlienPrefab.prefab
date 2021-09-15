@@ -16,8 +16,8 @@ GameObject:
   - component: {fileID: 5677818925163134695}
   - component: {fileID: 6519519437876208089}
   m_Layer: 0
-  m_Name: AsteroidPrefab
-  m_TagString: Asteroid
+  m_Name: AlienPrefab
+  m_TagString: Alien
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -123,10 +123,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 7181747031941621404}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67a537fcb844aab4f8a687b40b7c5fb1, type: 3}
+  m_Script: {fileID: 11500000, guid: 27a39d4662abb9c40b6f0cb55ab235ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pointValue: 0
+  pointValue: 10
   deathExplosion: {fileID: 5337052796686389297, guid: cf3bebaac3c3a9249ab7c144503c6640, type: 3}
   deathKnell: {fileID: 8300000, guid: b83e95534657cdd429dff999172d10e5, type: 3}
 --- !u!82 &6519519437876208089
