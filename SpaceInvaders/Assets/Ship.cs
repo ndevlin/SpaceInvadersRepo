@@ -38,13 +38,13 @@ public class Ship : MonoBehaviour
             rotationSpeed = 0.0f;
             thrust = false;
 
-            rotation = 0.01f;
+            rotation = -90.0f;
             rotationBool = 0.0f;
         }
         else
         {
             // Vector3 default initializes all components to 0.0f     
-            forceVector.x = 1.0f;
+            forceVector.x = 1000000000.0f;
             rotationSpeed = 1.0f;
 
             if (Input.GetKeyDown(KeyCode.W))
