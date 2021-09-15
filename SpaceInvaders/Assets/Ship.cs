@@ -9,6 +9,8 @@ public class Ship : MonoBehaviour
     public float rotation;
     public float timer;
 
+    public float lastFire;
+
     public int thrust;
     public float rotationBool;
 
@@ -21,12 +23,17 @@ public class Ship : MonoBehaviour
         rotation = -90.0f;
         thrust = 0;
         thrustPressed = false;
+
+        timer = 0.0f;
+        lastFire = 0.0f;
     }
 
     /* forced changes to rigid body physics parameters should be done through the FixedUpdate() 
     method, not the Update() method*/
     void FixedUpdate()
     {
+        timer += 1.0f;
+
         // Vector3 default initializes all components to 0.0f     
         forceVector.z = 1000000.0f;
 
@@ -58,8 +65,10 @@ public class Ship : MonoBehaviour
     // Update is called once per frame 
     void Update ()
     {
-        if(Input.GetButtonDown("Fire1"))
+        if(Input.GetButtonDown("Fire1") && timer > lastFire + 30.0f)
         {
+            lastFire = timer;
+
             Debug.Log("Fire! " + rotation);
 
             // We don't want to spawn a bullet inside our ship, so some
