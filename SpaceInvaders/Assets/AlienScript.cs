@@ -16,8 +16,10 @@ public class AlienScript : MonoBehaviour
         pointValue = 10;
         timer = 300;
         forceVector.x = 10.0f;
-
     }
+
+
+    public GameObject alienBullet; // the GameObject to spawn
 
     // Update is called once per frame
     void Update()
@@ -27,6 +29,22 @@ public class AlienScript : MonoBehaviour
         Vector3 currVec = ((float)Math.Sin((float)(timer) / 200.0)) * forceVector;
 
         GetComponent<Rigidbody>().AddRelativeForce(currVec);
+
+        if (UnityEngine.Random.Range(0.0f, 10000.0f) > 9999.0f)
+        {
+            Vector3 spawnPos = gameObject.transform.position;
+            spawnPos.z -= 4.0f;
+
+            //instatiate the bullet
+            GameObject obj = Instantiate(alienBullet, spawnPos, Quaternion.identity) as GameObject;
+
+            // get the Bullet Script Component of the new Bullet instance
+            AlienBulletScript b = obj.GetComponent<AlienBulletScript>();
+
+            // set the direction the Bullet will travel in
+            Quaternion rot = Quaternion.Euler(new Vector3(0, 90.0f, 0));
+            b.heading = rot;
+        }
     }
 
 
