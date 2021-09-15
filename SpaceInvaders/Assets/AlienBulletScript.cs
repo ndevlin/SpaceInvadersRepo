@@ -49,6 +49,16 @@ public class AlienBulletScript : MonoBehaviour
             //Destroy this bullet which collided with the Ship
             Destroy(gameObject);
         }
+        else if (collider.CompareTag("Bullet"))
+        {
+            BulletScript bullet = collider.gameObject.GetComponent<BulletScript>();
+
+            //let the other object handle it's own death
+            bullet.Die();
+
+            //Destroy this bullet which collided with the Alien
+            Destroy(gameObject);
+        }
         else
         {
             // If we collided with something else, print to the console
@@ -56,6 +66,14 @@ public class AlienBulletScript : MonoBehaviour
             Debug.Log("Collided with " + collider.tag);
         }
     }
-    
+
+    public void Die()
+    {
+        Debug.Log("Dying");
+
+        // Destroy removes the gameObject from the scene and marks it for garbage collection
+        Destroy(gameObject);
+    }
+
 }
 
