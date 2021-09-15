@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5677818925163134700}
   - component: {fileID: 5677818925163134695}
   - component: {fileID: 6519519437876208089}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: AlienPrefab
   m_TagString: Alien
   m_Icon: {fileID: 0}

@@ -38,14 +38,15 @@ public class AlienBulletScript : MonoBehaviour
 
         Collider collider = collision.collider;
         
+
         if(collider.CompareTag("Ship"))
         {
-            AlienScript alien = collider.gameObject.GetComponent<AlienScript>();
+            Ship ship = collider.gameObject.GetComponent<Ship>();
 
             //let the other object handle it's own death
-            alien.Die();
+            ship.Die();
 
-            //Destroy this bullet which collided with the Alien
+            //Destroy this bullet which collided with the Ship
             Destroy(gameObject);
         }
         else

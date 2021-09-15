@@ -80,6 +80,23 @@ public class Ship : MonoBehaviour
             b.heading = rot;
         }
     }
+
+    public GameObject deathExplosion;
+
+    public AudioClip deathKnell;
+
+    public void Die()
+    {
+        Debug.Log("Dying");
+
+        AudioSource.PlayClipAtPoint(deathKnell, gameObject.transform.position);
+
+        Instantiate(deathExplosion, gameObject.transform.position, Quaternion.AngleAxis(-90, Vector3.right));
+
+        // Destroy removes the gameObject from the scene and marks it for garbage collection
+        Destroy(gameObject);
+    }
+
 }
 
 

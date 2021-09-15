@@ -33,7 +33,7 @@ public class AlienScript : MonoBehaviour
         if (UnityEngine.Random.Range(0.0f, 10000.0f) > 9999.0f)
         {
             Vector3 spawnPos = gameObject.transform.position;
-            spawnPos.z -= 4.0f;
+            spawnPos.z -= 1.0f;
 
             //instatiate the bullet
             GameObject obj = Instantiate(alienBullet, spawnPos, Quaternion.identity) as GameObject;
