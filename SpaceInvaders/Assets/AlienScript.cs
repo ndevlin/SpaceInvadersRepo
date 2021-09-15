@@ -9,12 +9,15 @@ public class AlienScript : MonoBehaviour
     public Vector3 forceVector;
     public int pointValue;
     public int timer;
+    float bulletTimer;
 
     // Start is called before the first frame update
     void Start()
     {
         pointValue = 10;
         timer = 300;
+        bulletTimer = 0.0f;
+
         forceVector.x = 10.0f;
     }
 
@@ -30,7 +33,9 @@ public class AlienScript : MonoBehaviour
 
         GetComponent<Rigidbody>().AddRelativeForce(currVec);
 
-        if (UnityEngine.Random.Range(0.0f, 10000.0f) > 9999.0f)
+        float probabilityBound = 9999.0f - bulletTimer;
+
+        if (UnityEngine.Random.Range(0.0f, 10000.0f) > probabilityBound)
         {
             Vector3 spawnPos = gameObject.transform.position;
             spawnPos.z -= 1.0f;
@@ -44,7 +49,11 @@ public class AlienScript : MonoBehaviour
             // set the direction the Bullet will travel in
             Quaternion rot = Quaternion.Euler(new Vector3(0, 90.0f, 0));
             b.heading = rot;
+
+            bulletTimer += 1.0f;
+
         }
+
     }
 
 
