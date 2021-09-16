@@ -7,6 +7,9 @@ public class Global : MonoBehaviour
     public Vector3 originInScreenCoords;
     public int score;
 
+    public Camera firstPersonCamera;
+    public Camera overheadCamera;
+
 
     // Start is called before the first frame update
     void Start()
@@ -23,5 +26,27 @@ public class Global : MonoBehaviour
         {
             Application.LoadLevel("TitleScreen");
         }
+
+        if(Input.GetKeyDown(KeyCode.C))
+        {
+            SwitchView();
+        }
     }
+
+    // Call this function to disable FPS camera,
+    // and enable overhead camera.
+    public void SwitchView()
+    {
+        if (firstPersonCamera.enabled == true)
+        {
+            firstPersonCamera.enabled = false;
+            overheadCamera.enabled = true;
+        }
+        else
+        {
+            firstPersonCamera.enabled = true;
+            overheadCamera.enabled = false;
+        }
+    }
+
 }
