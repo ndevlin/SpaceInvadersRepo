@@ -83,5 +83,11 @@ public class AlienScript : MonoBehaviour
 
         // Destroy removes the gameObject from the scene and marks it for garbage collection
         Destroy(gameObject);
+
+        if (g.score > 540)
+        {
+            Application.LoadLevel("YouWon");
+        }
+
     }
 }

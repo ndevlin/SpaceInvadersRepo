@@ -58,6 +58,16 @@ public class BulletScript : MonoBehaviour
             //Destroy this bullet which collided with the Alien
             Destroy(gameObject);
         }
+        else if (collider.CompareTag("Bollard"))
+        {
+            BollardScript bollard = collider.gameObject.GetComponent<BollardScript>();
+
+            //let the other object handle it's own death
+            bollard.Die();
+
+            //Destroy this bullet which collided with the Alien
+            Destroy(gameObject);
+        }
         else
         {
             // If we collided with something else, print to the console
