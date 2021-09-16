@@ -78,6 +78,8 @@ public class AlienScript : MonoBehaviour
         Global g = obj.GetComponent<Global>();
         g.score += pointValue;
 
+        PlayerPrefs.SetInt("score", g.score);
+
 
         // Destroy removes the gameObject from the scene and marks it for garbage collection
         Destroy(gameObject);

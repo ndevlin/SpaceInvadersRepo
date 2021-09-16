@@ -35,7 +35,7 @@ public class Ship : MonoBehaviour
         timer += 1.0f;
 
         // Vector3 default initializes all components to 0.0f     
-        forceVector.z = 1000000.0f;
+        forceVector.z = 3000000.0f;
 
         // force thruster     
         if (Input.GetAxisRaw("Horizontal") < 0)
@@ -65,7 +65,7 @@ public class Ship : MonoBehaviour
     // Update is called once per frame 
     void Update ()
     {
-        if(Input.GetButtonDown("Fire1") && timer > lastFire + 30.0f)
+        if((Input.GetButtonDown("Fire1") || Input.GetKeyDown(KeyCode.Space)) && timer > lastFire + 20.0f)
         {
             lastFire = timer;
 
@@ -105,7 +105,7 @@ public class Ship : MonoBehaviour
         // Destroy removes the gameObject from the scene and marks it for garbage collection
         Destroy(gameObject);
 
-        Application.LoadLevel("TitleScreen");
+        Application.LoadLevel("GameOver");
     }
 
 }
