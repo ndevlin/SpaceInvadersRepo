@@ -16,6 +16,8 @@ public class Global : MonoBehaviour
     {
         score = 0;
         originInScreenCoords = Camera.main.WorldToScreenPoint(new Vector3(0, 0, 0));
+        firstPersonCamera.enabled = false;
+        overheadCamera.enabled = true;
     }
 
 

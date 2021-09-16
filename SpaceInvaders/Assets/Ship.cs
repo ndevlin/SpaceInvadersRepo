@@ -52,6 +52,7 @@ public class Ship : MonoBehaviour
             thrust = 0;
         }
 
+
         if(thrust != 0)
         {
             GetComponent<Rigidbody>().AddRelativeForce(thrust * forceVector);
